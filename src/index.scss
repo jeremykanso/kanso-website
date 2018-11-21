@@ -1,0 +1,122 @@
+/* GENERAL */
+
+$font-stack: "Montserrat", sans-serif;
+$orange: #ff6842;
+$blue: #8ac9ad;
+$yellow: #f6a841;
+$showcase-animation-duration: 0.8s;
+
+%standard-animation {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count:1;
+}
+
+%centered-flex {
+  justify-content: center;
+  align-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900');
+@import './modules/portfolio/portfolio';
+@import './modules/studio/studio';
+
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+.App {
+  font-family: $font-stack;
+}
+
+a, h1, h2, h3, h4, button, ul {
+  color: inherit;
+  padding:0;
+  margin:0;
+  border:none;
+  background:transparent;
+}
+
+h1, h2 {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.cool-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 10px;
+    margin-top:-8px;
+    background: $orange;
+    transition: width .5s  ease;
+    margin-left:2px;
+}
+
+.cool-link:hover::after, .active-link::after {
+    width: calc(100% - 4px);
+}
+
+.main-animation {
+  height:100%;
+  width:200vw;
+  background:#000;
+  position: fixed;
+  z-index:99;
+  right:-200%;
+  transition: right 3s;
+  display: flex;
+}
+
+.animation-activated-from-right {
+  right:100%;
+}
+
+.animation-activated-from-left {
+  right:-200%;
+}
+
+.animation-activated-from-left div img {
+  transform: rotateY(180deg);
+}
+
+.animation-activated-from-right div img {
+  transform: rotateY(0deg);
+}
+
+.main-animation div {
+align-items: center;
+flex:1;
+justify-content: center;
+height:100%;
+text-align: center;
+}
+.main-animation div img {
+  height:100%;
+}
+
+
+.logo {
+  position: fixed;
+  z-index: 10;
+  right:2%;
+  top:2vw;
+  width:4rem;
+  height:4rem;
+  left:auto;
+}
+
+.logo img {
+  height:100%;
+}
+
+.logo-portfolio {
+  left:2%;
+  right:auto;
+}

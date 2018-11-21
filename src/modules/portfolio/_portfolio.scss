@@ -1,0 +1,215 @@
+.cases {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+}
+
+.bg-case {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background: no-repeat center center fixed;
+  background-size: cover;
+}
+
+.cases h1, .roller {
+  position: absolute;
+  left: 2%;
+  top: 20%;
+  color: $orange;
+  font-size: 5.4rem;
+  z-index: 4;
+  text-transform: uppercase;
+}
+
+.wipe-up-in, .wipe-down-in{
+    overflow: hidden;
+    margin: 0 auto;
+    animation-name: wipe-up-in;
+    display:none;
+    @extend %standard-animation;
+}
+
+.wipe-down-in {
+    animation-name: wipe-down-in;
+}
+
+.active-case h1 {
+  display: block;
+}
+
+@keyframes wipe-up-in{
+  0%{opacity:0;transform:translateY(100%)}
+  100%{opacity:1;transform:translateY(0)}
+}
+
+@keyframes wipe-down-in{
+  0%{opacity:0;transform:translateY(-100%)}
+  100%{opacity:1;transform:translateY(0)}
+}
+
+.roller {
+  position: fixed;
+  top: auto;
+  bottom: 2vw;
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.showcase {
+  width:0%;
+  position: fixed;
+  height:100%;
+  top:0;
+  right:0;
+  z-index: 5;
+  transition: width $showcase-animation-duration ease;
+background: #333333;
+
+}
+
+.showcase-active {
+width:100%;
+}
+
+.showcase-container {
+  top:0;
+  left:2vw;
+  position: absolute;
+  height: 100vh;
+  width:98vw;
+  color:#fff;
+display: flex;
+}
+
+.showcase-carousel, .showcase-text {
+  position:relative;
+  height: 100vh;
+}
+
+.showcase-carousel {
+  flex:1;
+}
+
+.showcase-text {
+  flex:2;
+  top: calc(10vh + 50px);
+  height:calc(100vh - 10vh - 50px);
+}
+
+.showcase-close {
+  color:#fff;
+  position: absolute;
+  right:2vw;
+  top:calc(-10vh - 50px + 2vw);
+  width:2.2rem;
+  height:2.2rem;
+  transition: transform 0.5s, opacity 0.5s;
+  cursor: pointer;
+  padding:6px;
+  outline:none;
+}
+
+.showcase-close:hover {
+  transform:rotate(360deg);
+  opacity:0.7;
+}
+
+.showcase-close img {
+  height:100%;
+}
+
+.showcase-text h1, .showcase-text h2, p {
+  max-width: 98%;
+}
+
+.showcase-text h1 {
+  font-size: 7rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-position: 0% 0%;
+  color: transparent;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display:inline-block;
+  margin-bottom:2rem;
+  text-transform: uppercase;
+  line-height:5.7rem;
+  cursor: default;
+}
+
+.showcase-text h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color:$blue;
+}
+
+.showcase-text p {
+  line-height: 1.5;
+  margin:1rem 0;
+  font-size: 0.9rem;
+}
+
+.bloc-expertises {
+  list-style: none;
+  margin-top:2rem;
+}
+
+.expertise {
+  margin:1.5rem 0;
+}
+
+.expertise div {
+  display:inline-block;
+}
+
+.expertise-text {
+  color : $orange;
+  text-align: right;
+  padding-right:2rem;
+  width:20%;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+
+.expertise-gauge {
+  background: $blue;
+  width:60%;
+  height:6px;
+  position: relative;
+  top: -1px;
+  transition: width 0.5s ease;
+  transition-delay:$showcase-animation-duration;
+}
+
+
+
+
+
+.carousel-elem {
+  height: 100vh;
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+}
+
+.carousel-elem img {
+  opacity:0;
+}
+
+.carousel.carousel-slider .control-arrow {
+  width:100%;
+  bottom:auto !important;
+  top:0;
+}
+
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
+  transform: rotate(90deg);
+}
+
+.control-next {
+top:calc(100% - 40px) !important;
+}

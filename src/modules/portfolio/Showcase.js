@@ -24,15 +24,15 @@ export default class Showcase extends React.Component {
           <div className="showcase-text">
             <h1 style={{backgroundImage:`url(${selectedCase.bgUrlColor})`}}>{selectedCase.title}</h1>
             <h2>{selectedCase.titlebis}</h2>
-            {selectedCase.text.map((p) => {return <p>{p}</p>})}
+            {selectedCase.text.map((p, index) => {return <p key={index}>{p}</p>})}
 
               <ul className="bloc-expertises">
                 {
-                  selectedCase.expertises.map(({category, size}) => {
+                  selectedCase.expertises.map(({category, size}, index) => {
                     let jaugeSize = size * 0.6
                     if(!this.props.showcaseOn) jaugeSize = 0
                     return(
-                      <li className="expertise">
+                      <li key={index} className="expertise">
                         <div className="expertise-text">{category}</div>
                         <div className="expertise-gauge" style={{width:jaugeSize+"%"}} />
                       </li>
@@ -56,9 +56,9 @@ export default class Showcase extends React.Component {
                 emulateTouch={true}
                 >
                 {
-                  selectedCase.carouselImgsUrl.map((img) => {
+                  selectedCase.carouselImgsUrl.map((img, index) => {
                     return(
-                      <div className="carousel-elem" style={{backgroundImage:`url(${img})`}}>
+                      <div key={index} className="carousel-elem" style={{backgroundImage:`url(${img})`}}>
                         <img src={img} />
                       </div>)
                     })

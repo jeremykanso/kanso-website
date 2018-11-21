@@ -41,7 +41,7 @@ export default class Showcase extends React.Component {
                 }
               </ul>
 
-              <button className="showcase-close" onClick={this.props.toggleShowcase}><img src={require('../assets/img/croix_blanche.svg')} /></button>
+              <button className="showcase-close" onClick={this.props.toggleShowcase}><img src={require('../assets/img/close_showcase.svg')} /></button>
             </div>
             <div className="showcase-carousel">
               <Carousel

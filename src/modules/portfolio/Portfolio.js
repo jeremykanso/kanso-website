@@ -1,9 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-
 import Showcase from './Showcase'
 import Case from "./Case"
-import casesInfos from './BlockInfos'
+import casesList from './casesList'
 
 export default class Portfolio extends React.Component {
 
@@ -18,7 +17,7 @@ export default class Portfolio extends React.Component {
     return (
       <div className="portfolio">
         {
-          casesInfos.map(({id, title, bgUrl}) => {
+          casesList.map(({id, title, bgUrl}) => {
             return <Case name={title} key={id} index={id} isActive={(this.props.screenPos === id) ? true : false} scrollDirection={this.props.scrollDirection} bgUrl={bgUrl} onClickTitle={this.props.toggleShowcase} showcaseOn={this.props.showcaseOn} />
           })
         }

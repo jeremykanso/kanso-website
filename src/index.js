@@ -14,8 +14,10 @@ export default class App extends React.Component {
       sectionIsPortfolio:false,
       sectionsAreAnimating:false,
       animationFromRight:false,
-      screenPos: 0,
       portfolioIsAnimating: false,
+      studioIsAnimating: false,
+      screenPosPortfolio: 0,
+      screenPosStudio: 0,
       scrollDirection:"inactive",
       showcaseOn: false
     }
@@ -23,32 +25,41 @@ export default class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener("wheel", this.handleWheel)
+    window.addEventListener("resize", this.handleResize)
   }
 
   componentWillUnmount() {
     window.removeEventListener("wheel", this.handleWheel)
+    window.removeEventListener("resize", this.handleResize)
   }
 
+
+
   switchSections = () => {
-    if (!this.state.sidesAreAnimating) {
+    if (!this.state.sectionsAreAnimating) {
       this.setState({sectionsAreAnimating:true})
       if (!this.state.sectionIsPortfolio) {
         this.setState({animationFromRight:true})
         setTimeout(() => {
           this.setState({sectionIsPortfolio:true, sectionsAreAnimating:false, portfolioIsAnimating:true})
-          this.portfolioAnimation()
+          this.scrollAnimation()
         }, 1000)
       }
       else {
         this.setState({animationFromRight:false})
-        setTimeout(() => this.setState({sectionIsPortfolio:false, sectionsAreAnimating:false}), 1000)
+        setTimeout(() => {
+          this.setState({sectionIsPortfolio:false, sectionsAreAnimating:false, studioIsAnimating:true})
+          this.scrollAnimation()
+        }, 1000)
       }
     }
   }
 
   getScreenPos = (deltaY, screenPos) => {
+    let maxScreenPos = 3 // starts at 0 donc 4 écrans
+    if (this.state.sectionIsPortfolio) maxScreenPos = 2 // starts at 0 donc 3 écrans
     if (deltaY > 0) {
-      if (screenPos < 2) {
+      if (screenPos < maxScreenPos) {
         this.setState({scrollDirection:"down"})
         return screenPos + 1
       } else
@@ -60,39 +71,56 @@ export default class App extends React.Component {
         this.setState({scrollDirection:"up"})
         return screenPos - 1
       } else
-      return 2
+      return maxScreenPos
     }
   }
 
+
+  handleResize = () => {
+    this.scrollAnimation()
+  }
+
   handleWheel = e => {
-    if (!this.state.portfolioIsAnimating && !this.state.sectionsAreAnimating && this.state.sectionIsPortfolio) {
-      let delay = 0
-      if (this.state.showcaseOn) {
-        delay = 500
-        this.toggleShowcase()
+    if(!this.state.sectionsAreAnimating){
+      if(this.state.sectionIsPortfolio) {
+        if (!this.state.portfolioIsAnimating) {
+          let delay = 0
+          if (this.state.showcaseOn) {
+            delay = 500
+            this.toggleShowcase()
+          }
+
+          this.setState({portfolioIsAnimating:true})
+          setTimeout(() => {
+            this.setState({screenPosPortfolio: this.getScreenPos(e.deltaY, this.state.screenPosPortfolio)},
+            () => this.scrollAnimation())
+          }, delay)
+        }
+
+      } else {
+        if (!this.state.studioIsAnimating) {
+          this.setState({studioIsAnimating:true})
+          this.setState({screenPosStudio: this.getScreenPos(e.deltaY, this.state.screenPosStudio)},
+          () => this.scrollAnimation())
+        }
       }
+    }
+  }
 
-      this.setState({portfolioIsAnimating:true})
-      setTimeout(() => {
-        this.setState({screenPos: this.getScreenPos(e.deltaY, this.state.screenPos)},
-        () => this.portfolioAnimation())
-    }, delay)
-}
-}
-
-
-portfolioAnimation = () => {
-    animateScrollTo(document.querySelector('.case-'+this.state.screenPos),
+  scrollAnimation = () => {
+    let selectedElem = ".block-"+this.state.screenPosStudio
+    if (this.state.sectionIsPortfolio) selectedElem = ".case-"+this.state.screenPosPortfolio
+    animateScrollTo(document.querySelector(selectedElem),
     {
       speed:2000,
       cancelOnUserAction:false,
-      onComplete: () => this.setState({portfolioIsAnimating: false})
+      onComplete: () => this.setState({portfolioIsAnimating: false, studioIsAnimating:false})
     }
   )
 }
 
 toggleShowcase = () => {
- this.setState({showcaseOn: !this.state.showcaseOn})
+  this.setState({showcaseOn: !this.state.showcaseOn})
 }
 
 
@@ -107,8 +135,9 @@ render() {
 
       {
         !this.state.sectionIsPortfolio ?
-        <Studio />
-        : <Portfolio screenPos={this.state.screenPos} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />
+        <Studio screenPos={this.state.screenPosStudio} scrollDirection={this.state.scrollDirection} />
+
+        : <Portfolio screenPos={this.state.screenPosPortfolio} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />
     }
   </div>
 )

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types"
-import casesInfos from './BlockInfos'
+import casesList from './casesList'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 
@@ -14,7 +14,7 @@ export default class Showcase extends React.Component {
   }
 
   render() {
-    const selectedCase = casesInfos.find(selected => selected.id === this.props.index)
+    const selectedCase = casesList.find(selected => selected.id === this.props.index)
     let active = " "
     if (this.props.active) active = "showcase-active"
 

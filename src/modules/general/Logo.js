@@ -5,20 +5,20 @@ import PropTypes from "prop-types"
 export default class Logo extends React.Component {
 
   static propTypes = {
-    togglePortfolio: PropTypes.func,
-    portfolioOn: PropTypes.bool.isRequired
+    switchSections: PropTypes.func.isRequired,
+    sectionIsPortfolio: PropTypes.bool.isRequired
   }
 
   render() {
     let logoPortfolio = " "
     let logoColor = "black"
-    if (this.props.portfolioOn) {
+    if (this.props.sectionIsPortfolio) {
       logoPortfolio = "logo-portfolio"
       logoColor = "white"
     }
     return (
 
-      <div className={`logo ${logoPortfolio}`} onClick={this.props.onClick}>
+      <div className={`logo ${logoPortfolio}`} onClick={this.props.switchSections}>
       <img src={require(`../assets/img/logo_kanso_500px_${logoColor}.png`)} />
       </div>
     )

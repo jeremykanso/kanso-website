@@ -11,11 +11,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      portfolioOn:false,
-      togglePortfolioOn:false,
+      sectionIsPortfolio:false,
+      sectionsAreAnimating:false,
       animationFromRight:false,
       screenPos: 0,
-      portfolioAnimationOn: false,
+      portfolioIsAnimating: false,
       scrollDirection:"inactive",
       showcaseOn: false
     }
@@ -29,16 +29,19 @@ export default class App extends React.Component {
     window.removeEventListener("wheel", this.handleWheel)
   }
 
-  togglePortfolio = () => {
-    if (!this.state.togglePortfolio) {
-      this.setState({togglePortfolioOn:true})
-      if (!this.state.portfolioOn) {
+  switchSections = () => {
+    if (!this.state.sidesAreAnimating) {
+      this.setState({sectionsAreAnimating:true})
+      if (!this.state.sectionIsPortfolio) {
         this.setState({animationFromRight:true})
-        setTimeout(() => this.setState({portfolioOn:true, togglePortfolioOn:false}), 1000)
+        setTimeout(() => {
+          this.setState({sectionIsPortfolio:true, sectionsAreAnimating:false, portfolioIsAnimating:true})
+          this.portfolioAnimation()
+        }, 1000)
       }
       else {
         this.setState({animationFromRight:false})
-        setTimeout(() => this.setState({portfolioOn:false, togglePortfolioOn:false}), 1000)
+        setTimeout(() => this.setState({sectionIsPortfolio:false, sectionsAreAnimating:false}), 1000)
       }
     }
   }
@@ -62,37 +65,35 @@ export default class App extends React.Component {
   }
 
   handleWheel = e => {
-    if (!this.state.portfolioAnimationOn && !this.state.togglePortfolioOn && this.state.portfolioOn) {
+    if (!this.state.portfolioIsAnimating && !this.state.sectionsAreAnimating && this.state.sectionIsPortfolio) {
       let delay = 0
       if (this.state.showcaseOn) {
         delay = 500
         this.toggleShowcase()
       }
-      this.setState({portfolioAnimationOn:true})
+
+      this.setState({portfolioIsAnimating:true})
       setTimeout(() => {
         this.setState({screenPos: this.getScreenPos(e.deltaY, this.state.screenPos)},
-        () => {
-          animateScrollTo(document.querySelector('.case-'+this.state.screenPos),
-          {
-            speed:2000,
-            cancelOnUserAction:false,
-            onComplete: () => this.scrollAnimationEnds()
-          }
-        )
-      }
-    )
-  }, delay)
+        () => this.portfolioAnimation())
+    }, delay)
 }
 }
 
-scrollAnimationEnds = () => {
-  this.setState({portfolioAnimationOn: false})
+
+portfolioAnimation = () => {
+    animateScrollTo(document.querySelector('.case-'+this.state.screenPos),
+    {
+      speed:2000,
+      cancelOnUserAction:false,
+      onComplete: () => this.setState({portfolioIsAnimating: false})
+    }
+  )
 }
 
 toggleShowcase = () => {
  this.setState({showcaseOn: !this.state.showcaseOn})
 }
-
 
 
 render() {
@@ -102,10 +103,10 @@ render() {
 
       <MainAnimation animationFromRight={this.state.animationFromRight} />
 
-      <Logo portfolioOn={this.state.portfolioOn} onClick={this.togglePortfolio} />
+      <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} switchSections={this.switchSections} />
 
       {
-        !this.state.portfolioOn ?
+        !this.state.sectionIsPortfolio ?
         <Studio />
         : <Portfolio screenPos={this.state.screenPos} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />
     }

@@ -7,7 +7,7 @@ export default class TeamPic extends React.Component {
     index: PropTypes.number.isRequired,
     prenom: PropTypes.string.isRequired,
     titre: PropTypes.array.isRequired,
-    imgUrl: PropTypes.string.isRequired,
+    imgUrl: PropTypes.array.isRequired,
     onClick:PropTypes.func.isRequired,
   }
 

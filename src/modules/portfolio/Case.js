@@ -26,7 +26,7 @@ if (this.props.scrollDirection === "up") animationType = "wipe-up-in"
     return (
         <div className={`cases case-${this.props.index} ${activeCase}`}>
           <h1 className={`${animationType}`}><a href="javascript:;" className={`cool-link ${activeLink}`} onClick={this.props.onClickTitle}>{this.props.name}</a></h1>
-          <div onClick={this.props.onClickBg} className="bg-case" style={{backgroundImage:`url(${this.props.bgUrl})`}} />
+          <div className="bg-case" style={{backgroundImage:`url(${this.props.bgUrl})`}} />
         </div>
     );
   }

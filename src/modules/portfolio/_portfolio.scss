@@ -30,6 +30,7 @@
     animation-name: wipe-up-in;
     display:none;
     @extend %standard-animation;
+    animation-duration: 2s;
 }
 
 .wipe-down-in {
@@ -177,17 +178,13 @@ display: flex;
 
 .expertise-gauge {
   background: $blue;
-  width:60%;
+  width:0%;
   height:6px;
   position: relative;
   top: -1px;
   transition: width 0.5s ease;
   transition-delay:$showcase-animation-duration;
 }
-
-
-
-
 
 .carousel-elem {
   height: 100vh;

@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Front from './Front'
-import Presentation from './Presentation'
-import Craft from './Craft'
-import Team from './Team'
+import Front from './front/Front'
+import Presentation from './presentation/Presentation'
+import Craft from './craft/Craft'
+import Team from './team/Team'
 
 
 export default class Studio extends React.Component {

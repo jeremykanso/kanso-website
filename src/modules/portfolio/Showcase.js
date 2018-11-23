@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types"
 import casesList from './casesList'
+import BlockExpertises from '../general/BlockExpertises'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 
@@ -26,20 +27,7 @@ export default class Showcase extends React.Component {
             <h2>{selectedCase.titlebis}</h2>
             {selectedCase.text.map((p, index) => {return <p key={index}>{p}</p>})}
 
-              <ul className="bloc-expertises">
-                {
-                  selectedCase.expertises.map(({category, size}, index) => {
-                    let jaugeSize = size * 0.6
-                    if(!this.props.showcaseOn) jaugeSize = 0
-                    return(
-                      <li key={index} className="expertise">
-                        <div className="expertise-text">{category}</div>
-                        <div className="expertise-gauge" style={{width:jaugeSize+"%"}} />
-                      </li>
-                    )
-                    })
-                }
-              </ul>
+              <BlockExpertises type={"showcase"} selected={selectedCase} shouldActivate={this.props.showcaseOn} />
 
               <button className="showcase-close" onClick={this.props.toggleShowcase}><img src={require('../assets/img/close_showcase.svg')} /></button>
             </div>

@@ -8,9 +8,8 @@ $creme: #faf8e7;
 $showcase-animation-duration: 0.8s;
 
 %standard-animation {
-  animation-duration: 2s;
-  animation-fill-mode: both;
-  animation-iteration-count:1;
+animation-fill-mode: both;
+animation-iteration-count:1;
 }
 
 %centered-flex {
@@ -37,6 +36,7 @@ a, h1, h2, h3, h4, button, ul {
   margin:0;
   border:none;
   background:transparent;
+  outline:none;
 }
 
 h1, h2 {

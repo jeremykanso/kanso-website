@@ -10,19 +10,19 @@ export default class TeamText extends React.Component {
 
   static propTypes = {
     textIsActive: PropTypes.bool.isRequired,
-    teamText: PropTypes.string.isRequired,
+    teamTextType: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
   }
 
   render() {
-    const selectedText = teamList.find(selected => selected.id == this.props.teamText)
+    const selectedText = teamList.find(selected => selected.id == this.props.teamTextType)
 
-let buttonOpacity = 0
-let buttonShow = "default"
-if (this.props.textIsActive) {
-  buttonOpacity = 1
-  buttonShow = "pointer"
-}
+    let buttonOpacity = 0
+    let buttonShow = "default"
+    if (this.props.textIsActive) {
+      buttonOpacity = 1
+      buttonShow = "pointer"
+    }
 
     return (
       <div className="team-text">
@@ -41,22 +41,30 @@ if (this.props.textIsActive) {
           </div>
 
           <BlockExpertises type={"team"} selected={selectedText} shouldActivate={this.props.textIsActive} />
+          {
+            this.props.textIsActive &&
 
-              <button className="back-to-general" onClick={this.props.onClick} style={{opacity:buttonOpacity, cursor:buttonShow}}>
-                <svg viewBox="0 0 56 56">
+          <div className="team-socials">
+            <a href={`https://www.linkedin.com/in/${selectedText.socialsIds[0]}`} target="_blank"><img src={require("../../assets/img/linkedin.svg")} /></a>
+            <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank"><img src={require("../../assets/img/malt.svg")} /></a>
+          </div>
+        }
+
+          <button className="back-to-general" onClick={this.props.onClick} style={{opacity:buttonOpacity, cursor:buttonShow}}>
+            <svg viewBox="0 0 56 56">
+              <g>
+                <g>
                   <g>
-                    <g>
-                      <g>
-                        <polyline className="back-arrow-polyline-one" points="25.5,40.25 37.5,28.149 25.5,15.75"/>
-                      </g>
-                      <g>
-                        <polyline className="back-arrow-polyline-two" points="18.5,34 24.378,28.073 18.5,22"/>
-                      </g>
-                    </g>
-                    <circle cx="28" cy="28" r="25.5"/>
+                    <polyline className="back-arrow-polyline-one" points="25.5,40.25 37.5,28.149 25.5,15.75"/>
                   </g>
-                </svg>
-              </button>
+                  <g>
+                    <polyline className="back-arrow-polyline-two" points="18.5,34 24.378,28.073 18.5,22"/>
+                  </g>
+                </g>
+                <circle cx="28" cy="28" r="25.5"/>
+              </g>
+            </svg>
+          </button>
 
         </div>
       )

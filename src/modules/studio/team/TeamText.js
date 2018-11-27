@@ -50,6 +50,7 @@ export default class TeamText extends React.Component {
     return (
       <div className={`team-text ${classAnimation}`}>
         <h1 style={{color:!this.props.textIsActive ? "#ff6842" : "#333333" }}>L'équipe</h1>
+        <div className="test">
         {
           this.props.textIsActive &&
           <div className="team-sub-titles">
@@ -72,6 +73,7 @@ export default class TeamText extends React.Component {
             <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank"><img src={require("../../assets/img/malt.svg")} /></a>
           </div>
         }
+        </div>
 
           <button className="back-to-general" onClick={this.props.onClick} style={{opacity:buttonOpacity, cursor:buttonShow}}>
             <svg viewBox="0 0 56 56">

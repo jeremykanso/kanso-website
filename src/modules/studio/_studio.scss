@@ -101,42 +101,49 @@
   max-width: 50vh;
 }
 
+$transition-team: opacity 0.4s ease-out, transform 0.8s ease-out;
+
 .team-text {
   height:100%;
   flex:1;
   color:#333333;
   position: relative;
-  opacity: 0;
-//  transform:rotateY(310deg);
-  transform: scale(0.8);
-
-//  transform: translateY(0);
-//  margin-top:80px;
-
 }
 
-$transition-team: opacity 0.4s ease-out, transform 0.8s ease-out;
+.team-text .test, .team-text h1 {
+  opacity: 0;
+  transform:rotateY(310deg);
+}
 
 
-.team-not-active .team-text {
+
+.team-text-first-active-animation h1 {
+  opacity:1;
+  transform:rotateY(360deg);
+}
+
+
+.team-not-active .team-text .test, .team-not-active .team-text h1 {
   opacity:0;
-//  transform:rotateY(310deg);
-  transform: scale(0.8);
+  transform:rotateY(310deg);
 //  transform: translateY(0);
   transition: $transition-team;
 }
 
-.team-text-animation {
+.team-text-animation .test, .team-text-animation h1 {
   opacity:1;
   transition: $transition-team;
-//  transform:rotateY(360deg);
-  transform: scale(1);
+  transform:rotateY(360deg);
 
 //  transform: translateY(-80px);
 }
 
-.team-text-first-active-animation {
-  transition-delay: 1s;
+.team-text h1 {
+  transition-delay: 0.3s !important;
+}
+
+.team-text-first-active-animation .test {
+  transition-delay: 0.7s;
 }
 
 .team-text h1, .team-text h2, .team-text h3 {

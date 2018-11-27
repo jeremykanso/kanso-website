@@ -11,31 +11,54 @@ export default class TeamText extends React.Component {
   static propTypes = {
     textIsActive: PropTypes.bool.isRequired,
     teamTextType: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    isActive: PropTypes.bool.isRequired,
+  }
+
+  state = {animationIsActivated: true}
+
+  teamTextType = "general"
+  isActive = false
+
+  refreshStateForAnimation = () => {
+    this.setState({animationIsActivated:false})
+    this.teamTextType = this.props.teamTextType
+    setTimeout(() => {this.setState({animationIsActivated:true})}, 10)
   }
 
   render() {
-    const selectedText = teamList.find(selected => selected.id == this.props.teamTextType)
-
+    let selectedText = general_text
     let buttonOpacity = 0
     let buttonShow = "default"
     if (this.props.textIsActive) {
-      buttonOpacity = 1
-      buttonShow = "pointer"
-    }
+    selectedText = teamList.find(selected => selected.id == this.props.teamTextType)
+    buttonOpacity = 1
+    buttonShow = "pointer"
+  }
+
+  let classAnimation = ""
+  if (this.state.animationIsActivated) {
+    classAnimation = "team-text-animation"
+    if (!this.isActive) classAnimation = "team-text-animation team-text-first-active-animation"
+  }
+
+    if ((this.teamTextType != this.props.teamTextType)) this.refreshStateForAnimation()
+
+    this.isActive = this.props.isActive
+
 
     return (
-      <div className="team-text">
+      <div className={`team-text ${classAnimation}`}>
         <h1 style={{color:!this.props.textIsActive ? "#ff6842" : "#333333" }}>L'équipe</h1>
         {
           this.props.textIsActive &&
-          <div>
+          <div className="team-sub-titles">
             <h2>{selectedText.prenom} {selectedText.nom}</h2>
             <h3>{selectedText.titre[0]}<br/>& {selectedText.titre[1]}</h3>
           </div>
         }
         <div className="team-description">
-          {!this.props.textIsActive ? general_text.map((p, index) => {return <p key={index}>{p}</p>})
+          {!this.props.textIsActive ? selectedText.map((p, index) => {return <p key={index}>{p}</p>})
             : selectedText.text.map((text, index) => {return <p key={index}>{text}</p>})
             }
           </div>

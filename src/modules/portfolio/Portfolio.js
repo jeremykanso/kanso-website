@@ -24,7 +24,7 @@ export default class Portfolio extends React.Component {
 
         <div className="roller">{this.props.screenPos + 1}/3</div>
 
-        <Showcase active={this.props.showcaseOn} index={this.props.screenPos} toggleShowcase={this.props.toggleShowcase} showcaseOn={this.props.showcaseOn} />
+        <Showcase active={this.props.showcaseOn} index={this.props.screenPos} toggleShowcase={this.props.toggleShowcase} />
 
       </div>
     )

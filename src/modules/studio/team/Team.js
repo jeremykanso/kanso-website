@@ -24,7 +24,7 @@ export default class Team extends React.Component {
   }
 
   render() {
-    let activeBlock= " "
+    let activeBlock= "team-not-active"
     if (this.props.isActive) activeBlock= "active-block team-active"
     let textIsActive = true
     if (this.state.teamTextType === "general") textIsActive = false
@@ -38,7 +38,7 @@ export default class Team extends React.Component {
           }
         </div>
 
-        <TeamText textIsActive={textIsActive} teamTextType={this.state.teamTextType} onClick={this.onClickPicture('general')} />
+        <TeamText textIsActive={textIsActive} teamTextType={this.state.teamTextType} onClick={this.onClickPicture('general')} isActive={this.props.isActive} />
 
       </div>
 

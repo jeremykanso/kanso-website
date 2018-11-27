@@ -11,13 +11,20 @@ export default class Showcase extends React.Component {
     index: PropTypes.number.isRequired,
     toggleShowcase: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
-    showcaseOn: PropTypes.bool.isRequired
   }
+
+  autoPlay = false
+  state = {autoPlay: false} // forbidding carousel to play during showcaseAnimation
 
   render() {
     const selectedCase = casesList.find(selected => selected.id === this.props.index)
     let active = " "
-    if (this.props.active) active = "showcase-active"
+    if (this.props.active) {
+      active = "showcase-active"
+      if (this.autoPlay === this.state.autoPlay) {
+        setTimeout(() => {this.setState({autoPlay: true})}, 800)
+      }
+    }
 
     return (
       <div className={`showcase ${active}`}>
@@ -27,7 +34,7 @@ export default class Showcase extends React.Component {
             <h2>{selectedCase.titlebis}</h2>
             {selectedCase.text.map((p, index) => {return <p key={index}>{p}</p>})}
 
-              <BlockExpertises type={"showcase"} selected={selectedCase} shouldActivate={this.props.showcaseOn} />
+              <BlockExpertises type={"showcase"} selected={selectedCase} shouldActivate={this.props.active} />
 
               <button className="showcase-close" onClick={this.props.toggleShowcase}><img src={require('../assets/img/close_showcase.svg')} /></button>
             </div>
@@ -38,7 +45,7 @@ export default class Showcase extends React.Component {
                 infiniteLoop={true}
                 axis={"vertical"}
                 verticalSwipe={"natural"}
-                autoPlay={true}
+                autoPlay={this.state.autoPlay}
                 stopOnHover={true}
                 showThumbs={false}
                 emulateTouch={true}

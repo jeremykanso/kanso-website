@@ -68,7 +68,7 @@
   height:100%;
   position: absolute;
   z-index:3;
-  transition: width 1.6s ease-out, opacity 1.1s ease-out;
+  transition: width 1.4s ease-out, opacity 0.9s ease-out;
 }
 
 .team-active {
@@ -79,19 +79,19 @@
 }
 
 .team-pic-0 .team-previews {
-  transition-delay: 1.8s, 2.2s;
+  transition-delay: 1.6s, 2s;
 }
 
 .team-pic-1 .team-previews {
-  transition-delay: 1s, 1.4s;
+  transition-delay: 0.8s, 1.2s;
 }
 
 .team-pic-2 .team-previews {
-  transition-delay: 1.4s, 1.8s;
+  transition-delay: 1.2s, 1.6s;
 }
 
 .team-pic-3 .team-previews {
-  transition-delay: 2.2s, 2.6s;
+  transition-delay: 2s, 2.4s;
 }
 
 }
@@ -106,6 +106,37 @@
   flex:1;
   color:#333333;
   position: relative;
+  opacity: 0;
+  transform:rotateY(310deg);
+  transform: scale(0.8);
+
+//  transform: translateY(0);
+//  margin-top:80px;
+
+}
+
+$transition-team: opacity 0.4s ease-out, transform 0.8s ease-out;
+
+
+.team-not-active .team-text {
+  opacity:0;
+  transform:rotateY(310deg);
+  transform: scale(0.8);
+//  transform: translateY(0);
+  transition: $transition-team;
+}
+
+.team-text-animation {
+  opacity:1;
+  transition: $transition-team;
+  transform:rotateY(360deg);
+  transform: scale(1);
+
+//  transform: translateY(-80px);
+}
+
+.team-text-first-active-animation {
+  transition-delay: 1s;
 }
 
 .team-text h1, .team-text h2, .team-text h3 {
@@ -120,13 +151,13 @@
   transition: 1s ease;
   text-transform: uppercase;
   font-size:2.5rem;
-  margin-top:calc(4rem + 2vw + 4vh);
+  margin-top:calc(4rem + 2vw + 2vh);
   margin-bottom:5vh;
 }
 
 .team-text h2 {
   color:$orange;
-  margin-bottom:5vh;
+  margin-bottom:3vh;
   text-transform: uppercase;
 }
 
@@ -146,6 +177,7 @@
 
 .team .bloc-expertises {
   padding:0 3vw;
+  margin-top:0;
 }
 
 .team .expertise-text {
@@ -231,8 +263,6 @@ width:100%;
 text-align: center;
 height: 2.2rem;
 position: relative;
-margin-top:2rem;
-
 }
 
 .team-socials img {

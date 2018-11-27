@@ -192,8 +192,7 @@ display: flex;
   height:6px;
   position: absolute;
   top: calc(50% - 1px);
-  transition: width 0.5s ease;
-  transition-delay:$showcase-animation-duration;
+  transition: width 0.5s ease $showcase-animation-duration;
 }
 
 .carousel-elem {

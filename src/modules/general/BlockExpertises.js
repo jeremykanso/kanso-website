@@ -15,7 +15,18 @@ export default class BlockExpertises extends React.Component {
     shouldActivate:PropTypes.bool,
   }
 
+  state = {animationIsActivated: true}
+
+  checkSelected = ""
+
+  refreshStateForAnimation = () => {
+    this.setState({animationIsActivated:false})
+    this.checkSelected = this.props.selected
+    setTimeout(() => {this.setState({animationIsActivated:true})}, 500)
+  }
+
   render() {
+    let classAnimation = " "
     let gaugeFactor = 0.6
     let selected = this.props.selected
     let expOpacity = 1
@@ -25,6 +36,13 @@ export default class BlockExpertises extends React.Component {
         selected = generalIsSelected
         expOpacity = 0
       }
+
+
+
+      if (this.state.animationIsActivated) classAnimation = "team-gauge-animation"
+
+      if (this.checkSelected != this.props.selected) this.refreshStateForAnimation()
+
     }
 
     return (
@@ -32,11 +50,12 @@ export default class BlockExpertises extends React.Component {
         {
           selected.expertises.map(({category, size}, index) => {
             let gaugeSize = size * gaugeFactor
-            if(!this.props.shouldActivate) gaugeSize = 0
+            if((!this.props.shouldActivate) || (!this.state.animationIsActivated)) gaugeSize = 0
+
             return(
               <li key={index} className="expertise" style={{opacity:expOpacity}}>
                 <div className="expertise-text">{category}</div>
-                <div className="expertise-gauge" style={{width:gaugeSize+"%"}} />
+                <div className={`expertise-gauge ${classAnimation}`} style={{width:gaugeSize+"%"}} />
               </li>
             )
           })

@@ -101,7 +101,7 @@
   max-width: 50vh;
 }
 
-$transition-team: opacity 0.4s ease-out, transform 0.8s ease-out;
+$transition-team: opacity 0.4s ease-out, transform 0.4s ease-out;
 
 .team-text {
   height:100%;
@@ -110,39 +110,43 @@ $transition-team: opacity 0.4s ease-out, transform 0.8s ease-out;
   position: relative;
 }
 
-.team-text .test, .team-text h1 {
+.team-text .team-textarea, .team-text h1 {
   opacity: 0;
-  transform:rotateY(310deg);
+  //transform:rotateY(310deg);
+  transform:scale(0.9);
+
 }
 
 
 
 .team-text-first-active-animation h1 {
   opacity:1;
-  transform:rotateY(360deg);
+  //transform:rotateY(360deg);
+  transform:scale(1);
+
 }
 
 
-.team-not-active .team-text .test, .team-not-active .team-text h1 {
+.team-not-active .team-text .team-textarea, .team-not-active .team-text h1 {
   opacity:0;
-  transform:rotateY(310deg);
-//  transform: translateY(0);
+  //transform:rotateY(310deg);
+  transform:scale(0.9);
   transition: $transition-team;
 }
 
-.team-text-animation .test, .team-text-animation h1 {
+.team-text-animation .team-textarea, .team-text-animation h1 {
   opacity:1;
   transition: $transition-team;
-  transform:rotateY(360deg);
+  //transform:rotateY(360deg);
+  transform:scale(1);
 
-//  transform: translateY(-80px);
 }
 
 .team-text h1 {
   transition-delay: 0.3s !important;
 }
 
-.team-text-first-active-animation .test {
+.team-text-first-active-animation .team-textarea {
   transition-delay: 0.7s;
 }
 
@@ -195,7 +199,11 @@ $transition-team: opacity 0.4s ease-out, transform 0.8s ease-out;
 
 .team .expertise-gauge {
   background: $orange;
-  transition-delay:0s;
+  transition: 0s;
+}
+
+.team .team-gauge-animation {
+  transition: width 0.5s ease;
 }
 
 @keyframes back-arrow-moving-one{

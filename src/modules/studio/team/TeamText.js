@@ -42,7 +42,7 @@ export default class TeamText extends React.Component {
     if (!this.isActive) classAnimation = "team-text-animation team-text-first-active-animation"
   }
 
-    if ((this.teamTextType != this.props.teamTextType)) this.refreshStateForAnimation()
+    if (this.teamTextType != this.props.teamTextType) this.refreshStateForAnimation()
 
     this.isActive = this.props.isActive
 
@@ -50,7 +50,7 @@ export default class TeamText extends React.Component {
     return (
       <div className={`team-text ${classAnimation}`}>
         <h1 style={{color:!this.props.textIsActive ? "#ff6842" : "#333333" }}>L'équipe</h1>
-        <div className="test">
+        <div className="team-textarea">
         {
           this.props.textIsActive &&
           <div className="team-sub-titles">
@@ -65,9 +65,9 @@ export default class TeamText extends React.Component {
           </div>
 
           <BlockExpertises type={"team"} selected={selectedText} shouldActivate={this.props.textIsActive} />
+
           {
             this.props.textIsActive &&
-
           <div className="team-socials">
             <a href={`https://www.linkedin.com/in/${selectedText.socialsIds[0]}`} target="_blank"><img src={require("../../assets/img/linkedin.svg")} /></a>
             <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank"><img src={require("../../assets/img/malt.svg")} /></a>

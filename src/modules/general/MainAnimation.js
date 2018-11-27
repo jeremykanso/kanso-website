@@ -11,13 +11,15 @@ export default class MainAnimation extends React.Component {
 
   render() {
     let activateAnimation = " "
-      if(this.props.animationFromRight) activateAnimation ="animation-activated-from-right"
-      if(!this.props.animationFromRight) activateAnimation ="animation-activated-from-left"
+      if(this.props.animationFromRight) activateAnimation = "animation-activated-from-right"
+      if(!this.props.animationFromRight) activateAnimation = "animation-activated-from-left"
 
     return (
       <div className={`main-animation ${activateAnimation}`}>
         <div>
-        <img src="https://media.giphy.com/media/9mBM6GYYBoVW0/source.gif" />
+          {
+            this.props.animationFromRight ? <p>PORTFOLIO</p> : <p>STUDIO</p>
+          }
         </div>
       </div>
     )

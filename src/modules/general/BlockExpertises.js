@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import casesList from '../portfolio/casesList'
 import teamList from '../studio/team/teamList'
 
-const generalIsSelected = { // fake datas...
+const generalIsSelected = { // fake datas for design purposes...
   expertises: [{category:"", size:"0"}, {category:"", size:"0" }]
 };
 

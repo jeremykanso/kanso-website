@@ -20,6 +20,7 @@ export default class TeamText extends React.Component {
   teamTextType = "general"
   isActive = false
 
+
   refreshStateForAnimation = () => {
     this.setState({animationIsActivated:false})
     this.teamTextType = this.props.teamTextType

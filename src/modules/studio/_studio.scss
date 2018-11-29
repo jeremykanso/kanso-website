@@ -36,7 +36,7 @@
   display: block;
 }
 
-.presentation-active .wipe-up {
+.presentation-active h1 {
   animation-delay: 0.5s;
 }
 
@@ -58,8 +58,6 @@ height:4rem;
 overflow:hidden;
 }
 
-
-
 .presentation-active .box-overflow {
   animation-delay:5s !important;
   display: block;
@@ -69,12 +67,6 @@ overflow:hidden;
 
 }
 
-.box-scroller-animation-active {
-  transition: transform 0.5s;
-}
-
-
-
 .box-scroller p {
   color:$orange;
   font-size: 3rem;
@@ -82,6 +74,14 @@ overflow:hidden;
   margin:0;
   height: 4rem;
 }
+
+
+.box-scroller-animation-active {
+  transition: transform 0.5s;
+}
+
+
+
 
 /* TEAM SECTION */
 .team {

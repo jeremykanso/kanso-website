@@ -30,7 +30,7 @@ export default class BoxScroller extends React.Component {
     const timer = setInterval(() => {
       if (this.state.i > maxScrolls) {
         this.setState({i:0, boxScrollerAnimation: " "})
-        setTimeout(() => {this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})}, 50)
+        setTimeout(() => {this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})}, 50) // pas cool mais j'arrive pas à faire un callback de setState
       }
       else this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})
     }, 2000)

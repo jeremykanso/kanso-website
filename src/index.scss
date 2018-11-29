@@ -63,6 +63,10 @@ h1, h2 {
     width: calc(100% - 4px);
 }
 
+.text-wipe-effect{
+  overflow: hidden;
+}
+
 .main-animation {
   height:100%;
   width:200vw;

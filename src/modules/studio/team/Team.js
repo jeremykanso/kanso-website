@@ -8,7 +8,6 @@ import TeamText from './TeamText'
 export default class Team extends React.Component {
 
   static propTypes = {
-    scrollDirection: PropTypes.string.isRequired,
     isActive: PropTypes.bool.isRequired,
   }
 

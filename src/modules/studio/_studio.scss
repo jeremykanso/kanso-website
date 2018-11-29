@@ -5,8 +5,85 @@
 .blocks {
   height:100vh;
   width:100%;
+  position: relative;
 }
 
+/* PRESENTATION SECTION */
+
+.presentation-container {
+  position: relative;
+  top: calc(4rem + 2vw);
+  text-transform: uppercase;
+  padding: 0 2vw;
+}
+
+.presentation-container h1 {
+  color:$blue;
+  //text-decoration: underline;
+  font-size: 5.4rem;
+  text-align: right;
+}
+
+.presentation-container h2 {
+  color:#333;
+  font-size: 2rem;
+  text-transform: none;
+  margin-top:8vh;
+}
+
+
+.presentation-active h1, .presentation-active h2 {
+  display: block;
+}
+
+.presentation-active .wipe-up {
+  animation-delay: 0.5s;
+}
+
+.presentation-active .exist h2 {
+  animation-delay: 2s;
+}
+
+.presentation-active .realize h2 {
+  animation-delay: 3s;
+}
+
+
+.realize {
+text-align:right;
+}
+
+.box-overflow {
+height:4rem;
+overflow:hidden;
+}
+
+
+
+.presentation-active .box-overflow {
+  animation-delay:5s !important;
+  display: block;
+}
+
+.box-scroller {
+
+}
+
+.box-scroller-animation-active {
+  transition: transform 0.5s;
+}
+
+
+
+.box-scroller p {
+  color:$orange;
+  font-size: 3rem;
+  font-weight: 800;
+  margin:0;
+  height: 4rem;
+}
+
+/* TEAM SECTION */
 .team {
   display: flex;
 }

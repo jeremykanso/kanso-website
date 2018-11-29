@@ -27,20 +27,16 @@ export default class Presentation extends React.Component {
 
           <div className="exist">
             <div className="text-wipe-effect"><h2 className={`${wipe}`}>Vous donner les moyens d'exister :</h2></div>
-            { //this.props.isActive &&
-              <div className={`box-overflow ${opacity}`}>
-              <BoxScroller type="exist" />
-              </div>
+            { this.props.isActive &&
+                <BoxScroller type="exist" fade={opacity} />
             }
           </div>
           <div className="realize">
             <div className="text-wipe-effect"><h2 className={`${wipe}`}>...et de réaliser vos plus grands projets :</h2></div>
-              { //this.props.isActive &&
-                <div className={`box-overflow ${opacity}`}>
-                <BoxScroller type="realize" />
-                </div>
-              }
-            </div>
+            { this.props.isActive &&
+                <BoxScroller type="realize" fade={opacity} />
+            }
+          </div>
         </div>
       </div>
 

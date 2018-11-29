@@ -6,6 +6,7 @@ export default class BoxScroller extends React.Component {
 
   static propTypes = {
     type: PropTypes.string.isRequired,
+    fade: PropTypes.string.isRequired
   }
 
 
@@ -30,24 +31,26 @@ export default class BoxScroller extends React.Component {
     const timer = setInterval(() => {
       if (this.state.i > maxScrolls) {
         this.setState({i:0, boxScrollerAnimation: " "})
-        setTimeout(() => {this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})}, 50) // pas cool mais j'arrive pas à faire un callback de setState
+        setTimeout(() => {this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})}, 50) // pas cool mais j'arrive pas à faire un callback de setState vu que c'est asynchrone
       }
       else this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})
     }, 2000)
   }
 
   render() {
-    const scrollerPos = -4 * this.state.i
+    let scrollerPos = -4 * this.state.i
+    if (this.props.type === "realize") scrollerPos = 4 * this.state.i
     const selectedWeDo = weDoList.find(selected => selected.type == this.props.type)
 
-
     return (
+      <div className={`box-overflow ${this.props.fade}`}>
         <div className={`box-scroller ${this.state.boxScrollerAnimation}`} style={{transform:`translateY(${scrollerPos}rem)`}}>
           {
             selectedWeDo.titres.map((titres, index) => {
               return <p key={index}>{titres}</p>})
               }
             </div>
+          </div>
         )
       }
 

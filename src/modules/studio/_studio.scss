@@ -37,7 +37,7 @@
 }
 
 .presentation-active h1 {
-  animation-delay: 0.5s;
+  animation-delay: 1s;
 }
 
 .presentation-active .exist h2 {
@@ -63,10 +63,6 @@ overflow:hidden;
   display: block;
 }
 
-.box-scroller {
-
-}
-
 .box-scroller p {
   color:$orange;
   font-size: 3rem;
@@ -75,12 +71,13 @@ overflow:hidden;
   height: 4rem;
 }
 
-
 .box-scroller-animation-active {
   transition: transform 0.5s;
 }
 
-
+.realize .box-scroller {
+  margin-top:-12rem; // en fonction du nombre d'éléments, cf. weDoList
+}
 
 
 /* TEAM SECTION */

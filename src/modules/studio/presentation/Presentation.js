@@ -8,8 +8,6 @@ export default class Presentation extends React.Component {
     isActive: PropTypes.bool.isRequired,
   }
 
-
-
   render() {
     let activeBlock= " "
     let wipe= "wipe-up-out"
@@ -26,13 +24,13 @@ export default class Presentation extends React.Component {
           <div className="text-wipe-effect"><h1 className={`${wipe}`}>Notre savoir-faire</h1></div>
 
           <div className="exist">
-            <div className="text-wipe-effect"><h2 className={`${wipe}`}>Vous donner les moyens d'exister :</h2></div>
+            <div className="text-wipe-effect"><h2 className={`${wipe}`}>Vous donner les moyens d'exister...</h2></div>
             { this.props.isActive &&
                 <BoxScroller type="exist" fade={opacity} />
             }
           </div>
           <div className="realize">
-            <div className="text-wipe-effect"><h2 className={`${wipe}`}>...et de réaliser vos plus grands projets :</h2></div>
+            <div className="text-wipe-effect"><h2 className={`${wipe}`}>...et de réaliser vos plus grands projets</h2></div>
             { this.props.isActive &&
                 <BoxScroller type="realize" fade={opacity} />
             }

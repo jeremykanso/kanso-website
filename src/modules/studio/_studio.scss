@@ -10,18 +10,20 @@
 
 /* PRESENTATION SECTION */
 
-.presentation-container {
+.presentation-container, .craft-container {
   position: relative;
   top: calc(4rem + 2vw);
   text-transform: uppercase;
   padding: 0 2vw;
 }
 
+.presentation-container > div:nth-child(1), .craft-container .craft-title-container > div{
+  border-bottom: 8px solid $blue;
+}
+
 .presentation-container h1 {
   color:$blue;
-  //text-decoration: underline;
   font-size: 5.4rem;
-  text-align: right;
 }
 
 .presentation-container h2 {
@@ -32,22 +34,21 @@
 }
 
 
-.presentation-active h1, .presentation-active h2 {
+.active-block h1, .active-block h2 {
   display: block;
 }
 
-.presentation-active h1 {
+.active-block h1 {
   animation-delay: 1s;
 }
 
 .presentation-active .exist h2 {
-  animation-delay: 2s;
+  animation-delay: 1.5s;
 }
 
 .presentation-active .realize h2 {
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
-
 
 .realize {
 text-align:right;
@@ -59,7 +60,7 @@ overflow:hidden;
 }
 
 .presentation-active .box-overflow {
-  animation-delay:5s !important;
+  animation-delay:3s !important;
   display: block;
 }
 
@@ -69,6 +70,7 @@ overflow:hidden;
   font-weight: 800;
   margin:0;
   height: 4rem;
+  max-width: 100%;
 }
 
 .box-scroller-animation-active {
@@ -77,6 +79,120 @@ overflow:hidden;
 
 .realize .box-scroller {
   margin-top:-12rem; // en fonction du nombre d'éléments, cf. weDoList
+}
+
+/* CRAFT SECTION */
+.craft-container .craft-title-container > div {
+  border-color: $yellow;
+}
+
+.craft-container h1 {
+  color:$yellow;
+  font-size: 3.5rem;
+}
+
+
+.craft-container {
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem - 2vw);
+}
+
+.test {
+    flex:1;
+}
+
+.craft-title-container {
+  margin: 0 2vw;
+
+}
+
+.craft-subcontainer {
+  width:100%;
+  flex:3;
+  display: flex;
+  position:relative;
+  overflow: hidden;
+}
+
+.craft-block {
+  flex:1;
+  height:calc(100% - 1rem);
+  border-right:1px solid #333333;
+  margin-top:1rem;
+}
+
+.craft-subcontainer div:last-child {
+  border: none;
+}
+
+.hidden-craft-block, .visible-craft-block {
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.visible-craft-block {
+  transition: top 0.5s ease;
+  z-index: 1;
+  background: $creme;
+  top:0;
+  cursor:pointer;
+
+}
+
+.visible-craft-block > div, .hidden-craft-block > div {
+  display: flex;
+flex-direction: column;
+@extend %centered-flex;
+height:80%;
+width:100%;
+top:10%;
+position: relative;
+}
+
+.craft-block h2 {
+  text-align: center;
+      margin-top: 5vh;
+      color:$blue;
+      font-weight: 600;
+      font-size: 1.5rem;
+}
+
+.visible-craft-block img {
+  max-width:70%;
+  height:100%;
+}
+
+.hidden-craft-block img {
+  max-width:30%;
+}
+
+
+.hidden-craft-block h2 {
+  margin-top:0;
+  margin: 3vh 0;
+  font-size: 1.2rem;
+}
+
+.hidden-craft-block p {
+  max-width: auto;
+  color:#fff;
+  text-transform: none;
+  margin:0;
+  text-align: justify;
+  padding:0 2vw;
+}
+
+.hidden-craft-block {
+  background:#333333;
+  top:-100%;
+  z-index: 0;
+}
+
+.open-craft-block {
+top:100%;
 }
 
 

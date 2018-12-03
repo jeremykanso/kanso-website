@@ -25,11 +25,11 @@ export default class TeamPic extends React.Component {
           <span>& {this.props.titre[1]}</span>
         </div>
         <div className="team-filter">
-          <img src={this.props.imgUrl[1]} />
+          <img src={this.props.imgUrl[1]} alt={`img-filter ${this.props.prenom}`} />
         </div>
         <div className="team-previews" style={{backgroundColor:this.props.color}}>
         </div>
-        <img src={this.props.imgUrl[0]} />
+        <img src={this.props.imgUrl[0]} alt={`img ${this.props.prenom}`} />
       </div>
     )
   }

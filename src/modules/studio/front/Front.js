@@ -17,8 +17,9 @@ export default class Front extends React.Component {
     if (this.props.isActive) activeBlock= "active-block front-active"
     return (
       <div className={`blocks block-${this.props.index} front ${activeBlock}`}>
-        <div style={{width:"100%", height:"100%", display:"flex", flexDirection:"column", justifyContent:"center", alignItems: "center"}}>
-        <img src={require("../../assets/img/kanso.gif")} style={{width:"100%", maxHeight:"100%"}} />
+        <div className="front-container">
+        <img src={require("../../assets/img/kanso.gif")} alt="kanso studio intro" />
+        <h1>Studio Digital & Créatif</h1>
       </div>
     </div>
 

@@ -24,13 +24,13 @@ export default class CraftBlock extends React.Component {
       <div className={`craft-block craft-block-${this.props.index}`} onClick={this.props.onClick}>
         <div className={`visible-craft-block ${activeBlock}`}>
           <div style={{height:"80%", width:"100%"}}>
-          <img src={selected.imgUrl} />
+          <img src={selected.imgUrl} alt={`img ${selected.titre}`} />
           <h2>{selected.titre}<br/>&<br/>{selected.titrebis}</h2>
           </div>
         </div>
         <div className="hidden-craft-block">
           <div style={{height:"80%", width:"100%"}}>
-          <img src={selected.imgUrl} />
+          <img src={selected.imgUrl} alt={`img-bis ${selected.titre}`} />
           <h2>{selected.titre}<br/>&<br/>{selected.titrebis}</h2>
           <p>{selected.text}</p>
           </div>

@@ -43,31 +43,6 @@ h1, h2 {
   letter-spacing: 1px;
 }
 
-.cool-link {
-    display: inline-block;
-    text-decoration: none;
-    text-transform: inherit;
-font-size: inherit;
-font-weight: inherit;
-cursor: pointer;
-letter-spacing: inherit;
-}
-
-.cool-link::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 10px;
-    margin-top:-8px;
-    background: $orange;
-    transition: width .5s  ease;
-    margin-left:2px;
-}
-
-.cool-link:hover::after, .active-link::after {
-    width: calc(100% - 4px);
-}
-
 .text-wipe-effect{
   overflow: hidden;
 }
@@ -154,7 +129,7 @@ letter-spacing: 40px;
 
 
 
-.wipe-up-in, .wipe-down-in, .wipe-up, .wipe-down, .opacity-in, .opacity-out{
+.wipe-up-in, .wipe-down-in, /*.wipe-up, .wipe-down,*/ .scale-opacity-in, .scale-opacity-out{
     overflow: hidden;
     margin: 0 auto;
     animation-name: wipe-up-in;
@@ -166,8 +141,9 @@ letter-spacing: 40px;
 .wipe-down-in {
     animation-name: wipe-down-in;
 }
-
+/*
 .wipe-up {
+  animation-duration: 1.3s;
   animation-name: wipe-up;
 }
 
@@ -176,13 +152,16 @@ letter-spacing: 40px;
   animation-duration: 1s;
 transform:translateY(100%);
 }
+*/
+.scale-opacity-in {
+  animation-name: scale-opacity-in;
+  animation-duration: 1s;
 
-.opacity-in {
-  animation-name: opacity-in;
 }
 
-.opacity-out {
-  animation-name: opacity-out;
+.scale-opacity-out {
+  animation-name: scale-opacity-out;
+  animation-duration: 1s;
 }
 
 
@@ -197,10 +176,6 @@ transform:translateY(100%);
 }
 */
 
-.active-case h1 {
-  display: block;
-}
-
 @keyframes wipe-up-in{
   0%{opacity:0;transform:translateY(100%)}
   100%{opacity:1;transform:translateY(0)}
@@ -210,7 +185,7 @@ transform:translateY(100%);
   0%{opacity:0;transform:translateY(-100%)}
   100%{opacity:1;transform:translateY(0)}
 }
-
+/*
 @keyframes wipe-up{
   0%{transform:translateY(100%)}
   100%{transform:translateY(0)}
@@ -221,15 +196,19 @@ transform:translateY(100%);
   100%{transform:translateY(100%)}
 }
 
-
-@keyframes opacity-in{
-  0%{opacity:0;}
-  100%{opacity:1;}
+*/
+@keyframes scale-opacity-in{
+  0%{opacity:0;  transform:scale(0.8);
+}
+  100%{opacity:1;  transform:scale(1);
+}
 }
 
-@keyframes opacity-out{
-  0%{opacity:1;}
-  100%{opacity:0;}
+@keyframes scale-opacity-out{
+  0%{opacity:1;transform:scale(1);
+}
+  100%{opacity:0;transform:scale(0.8);
+}
 }
 
 /*@keyframes wipe-down{

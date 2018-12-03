@@ -6,28 +6,29 @@ export default class BoxScroller extends React.Component {
 
   static propTypes = {
     type: PropTypes.string.isRequired,
-    fade: PropTypes.string.isRequired
+    isActive: PropTypes.bool.isRequired,
   }
 
 
   state = {
     i:0,
     boxScrollerAnimation: "box-scroller-animation-active",
-    animationDuration: 1500
+    animationDuration: 1500,
+    timerOn:false
   }
 
   componentDidMount() {
-    let maxScrolls = 4
-    if (this.props.type === "realize") maxScrolls = 2
-    this.autoScroller(maxScrolls)
+
   }
 
-  componentWillUnmount(){
-clearInterval(this.timer)
+
+  componentDidUpdate(prevProps){
+    let maxScrolls = 4
+    if (this.props.type === "realize") maxScrolls = 2
+    if(this.props.isActive && !this.state.timerOn) {this.setState({timerOn:true});setTimeout(() => {this.autoScroller(maxScrolls)}, 1800)} else if(!this.props.isActive && this.props.timerOn) {clearInterval(this.timer); this.setState({timerOn:false})}
   }
 
   autoScroller = (maxScrolls) => {
-
     this.timer = setInterval(() => {
       if (this.state.i > maxScrolls) {
         this.setState({i:0, boxScrollerAnimation: " "})
@@ -43,7 +44,7 @@ clearInterval(this.timer)
     const selectedWeDo = weDoList.find(selected => selected.type === this.props.type)
 
     return (
-      <div className={`box-overflow ${this.props.fade}`}>
+      <div className={`box-overflow`}>
         <div className={`box-scroller ${this.state.boxScrollerAnimation}`} style={{transform:`translateY(${scrollerPos}rem)`}}>
           {
             selectedWeDo.titres.map((titres, index) => {

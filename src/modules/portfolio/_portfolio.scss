@@ -1,3 +1,22 @@
+
+// CASES SECTION
+
+
+.cool-effect {
+  display: block;
+  width:0;
+  margin-top:-8px;
+  background: $orange;
+  margin-left:2px;
+  height: 10px;
+}
+
+.active-case .cool-effect {
+  width: calc(100% - 4px);
+  transition: width 0.8s ease-out 1.2s;
+}
+
+
 .cases {
   position: relative;
   width: 100%;
@@ -14,23 +33,105 @@
   background-size: cover;
 }
 
-.cases h1, .roller {
+.cases h1 {
+  cursor:default;
+  color: $orange;
+  font-size: 5.4rem;
+  text-transform: uppercase;
+}
+
+.portfolio-titles {
   position: absolute;
   left: 2%;
   top: 20%;
-  color: $orange;
-  font-size: 5.4rem;
   z-index: 4;
+}
+
+.cases h2 {
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 500;
+  margin-left:0.2rem;
+  line-height: 3rem;
+  text-transform: none;
+}
+
+.active-case h1, .active-case h2, .active-case .button-project {
+  display: block;
+}
+
+.button-project {
+  position: absolute;
   text-transform: uppercase;
+  font-size: 1rem;
+  left:2%;
+  top:60%;
+  padding: 0.6rem 5rem;
+  color:#ffffff;
+  cursor:pointer;
+  border:2px solid #ffffff;
+  letter-spacing: 1.5px;
+  z-index: 4;
+}
+
+.button-project {
+  display: inline-block;
+  text-transform: uppercase;
+  text-align: left;
+  overflow: hidden;
+
+  &:before, &:after {
+    content: "Voir le projet";
+    padding-top: inherit;
+    padding-bottom: inherit;
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    color: $orange;
+    background: #ffffff;
+  }
+
+  &:before {
+    left: 0;
+    text-indent: 5rem;
+    width: 0;
+  }
+
+  &:after {
+    padding-left: inherit;
+    padding-right: inherit;
+    left: 100%;
+    text-indent: calc(-100% - 10rem);
+    transition: 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+      transition: width 0.2s ease-in-out;
+    }
+
+    &:after {
+      left: 0;
+      text-indent: 0;
+      transition: 0s 0.2s ease-in-out;
+    }
+  }
 }
 
 .roller {
   position: fixed;
   top: auto;
   bottom: 2vw;
+  color: $orange;
+  left:2%;
   font-size: 2.4rem;
-  font-weight: 800;
+  font-weight: normal;
+  letter-spacing: 4px;
 }
+
+// SHOWCASE SECTION
 
 $showcase-animation-duration: 0.8s;
 
@@ -41,13 +142,13 @@ $showcase-animation-duration: 0.8s;
   top:0;
   right:0;
   z-index: 5;
-  transition: width $showcase-animation-duration ease-out;
-background: #333333;
+  transition: width $showcase-animation-duration ease-in-out;
+  background: #333333;
 
 }
 
 .showcase-active {
-width:100%;
+  width:100%;
 }
 
 .showcase-container {
@@ -57,7 +158,7 @@ width:100%;
   height: 100vh;
   width:98vw;
   color:#fff;
-display: flex;
+  display: flex;
 
 }
 
@@ -70,46 +171,61 @@ display: flex;
   flex:1;
 }
 
+
 .showcase-text {
   flex:2;
-  top: calc(10vh + 50px);
-  height:calc(100vh - 10vh - 50px);
+  top: calc(10vh + 2rem);
+  height:calc(100vh - 10vh - 2rem);
   opacity:0;
   transition: opacity 1.3s ease-out;
 }
 
 .showcase-active .showcase-text {
   opacity:1;
+  transition-delay: 0.5s;
 }
 
 .showcase-close {
   color:#fff;
   position: absolute;
   right:2vw;
-  top:calc(-10vh - 50px + 2vw);
-  width:2.2rem;
-  height:2.2rem;
-  transition: transform 0.5s, opacity 0.5s;
+  top:calc(-10vh - 2rem + 2vw);
   cursor: pointer;
-  padding:6px;
   outline:none;
 }
 
-.showcase-close:hover {
-  transform:rotate(360deg);
-  opacity:0.7;
+.showcase {
+
+  .back-to-general {
+    cursor: pointer;
+    transform:rotate(180deg);
+    opacity:1;
+    left:auto;
+    bottom:auto;
+    transition: none;
+  }
+
+
+  .back-to-general svg polyline, .back-to-general svg circle {
+    stroke:#ffffff;
+    transition: transform 0.5s ease;
+  }
+
+  .back-to-general svg circle {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+
 }
 
-.showcase-close img {
-  height:100%;
-}
 
-.showcase-text h1, .showcase-text h2, p {
+.showcase-text h1, .showcase-text h2, .showcase-text p {
   max-width: 98%;
 }
 
 .showcase-text h1 {
-  font-size: 6rem;
+  font-size: 5.5rem;
   background-clip: text;
   -webkit-background-clip: text;
   background-position: 0% 0%;
@@ -132,8 +248,8 @@ display: flex;
 
 .showcase-text p {
   line-height: 1.5;
-  margin:1rem 0;
-  font-size: 0.9rem;
+  margin:0.8rem 0;
+  font-size: 0.8rem;
 }
 
 .bloc-expertises {
@@ -170,9 +286,9 @@ display: flex;
 
 .carousel-elem {
   height: 100vh;
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .carousel-elem img {
@@ -190,5 +306,5 @@ background-repeat: no-repeat;
 }
 
 .control-next {
-top:calc(100% - 40px) !important;
+  top:calc(100% - 40px) !important;
 }

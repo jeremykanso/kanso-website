@@ -17,8 +17,8 @@ export default class Portfolio extends React.Component {
     return (
       <div className="portfolio">
         {
-          casesList.map(({id, title, bgUrl}) => {
-            return <Case name={title} key={id} index={id} isActive={(this.props.screenPos === id) ? true : false} scrollDirection={this.props.scrollDirection} bgUrl={bgUrl} onClickTitle={this.props.toggleShowcase} showcaseOn={this.props.showcaseOn} />
+          casesList.map(({id, title, titlebisshort, bgUrlColor}) => {
+            return <Case name={title} key={id} index={id} isActive={(this.props.screenPos === id) ? true : false} scrollDirection={this.props.scrollDirection} bgUrlColor={bgUrlColor} titlebisshort={titlebisshort} onClick={this.props.toggleShowcase} showcaseOn={this.props.showcaseOn} />
           })
         }
 

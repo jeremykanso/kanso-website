@@ -10,29 +10,27 @@ export default class Presentation extends React.Component {
 
   render() {
     let activeBlock= " "
-    let wipe= "wipe-up-out"
-    let opacity= "opacity-out"
+    let scaleOpacity= "scale-opacity-out"
     if (this.props.isActive) {
       activeBlock= "active-block presentation-active"
-      wipe= "wipe-up"
-      opacity= "opacity-in"
+      scaleOpacity= "scale-opacity-in"
     }
 
     return (
       <div className={`blocks block-${this.props.index} presentation ${activeBlock}`}>
         <div className="presentation-container">
-          <div className="text-wipe-effect"><h1 className={`${wipe}`}>Notre savoir-faire</h1></div>
+          <div className="text-wipe-effect"><h1>Notre savoir-faire</h1><div className="border-wipe-effect" /></div>
 
           <div className="exist">
-            <div className="text-wipe-effect"><h2 className={`${wipe}`}>Vous donner les moyens d'exister...</h2></div>
-            { this.props.isActive &&
-                <BoxScroller type="exist" fade={opacity} />
+            <div className="text-wipe-effect"><h2>Vous donner les moyens d'exister...</h2></div>
+            { //this.props.isActive &&
+                <BoxScroller type="exist" isActive={this.props.isActive} />
             }
           </div>
           <div className="realize">
-            <div className="text-wipe-effect"><h2 className={`${wipe}`}>...et de réaliser vos plus grands projets</h2></div>
-            { this.props.isActive &&
-                <BoxScroller type="realize" fade={opacity} />
+            <div className="text-wipe-effect"><h2>...et de réaliser vos plus grands projets</h2></div>
+            { //this.props.isActive &&
+                <BoxScroller type="realize" isActive={this.props.isActive} />
             }
           </div>
         </div>

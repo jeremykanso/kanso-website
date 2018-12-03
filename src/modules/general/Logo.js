@@ -9,7 +9,7 @@ export default class Logo extends React.Component {
 
   render() {
     let logoPortfolio = " "
-    let logoColor = "black"
+    let logoColor = "grey"
     if (this.props.sectionIsPortfolio) {
       logoPortfolio = "logo-portfolio"
       logoColor = "white"

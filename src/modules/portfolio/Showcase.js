@@ -36,7 +36,21 @@ export default class Showcase extends React.Component {
 
               <BlockExpertises type={"showcase"} selected={selectedCase} shouldActivate={this.props.active} />
 
-              <button className="showcase-close" onClick={this.props.toggleShowcase}><img src={require('../assets/img/close_showcase.svg')} /></button>
+                <button className="back-to-general showcase-close" onClick={this.props.toggleShowcase} style={{opacity:1, cursor:"pointer"}}>
+                  <svg viewBox="0 0 56 56">
+                    <g>
+                      <g>
+                        <g>
+                          <polyline className="back-arrow-polyline-one" points="25.5,40.25 37.5,28.149 25.5,15.75"/>
+                        </g>
+                        <g>
+                          <polyline className="back-arrow-polyline-two" points="18.5,34 24.378,28.073 18.5,22"/>
+                        </g>
+                      </g>
+                      <circle cx="28" cy="28" r="25.5"/>
+                    </g>
+                  </svg>
+                </button>
             </div>
             <div className="showcase-carousel">
               <Carousel
@@ -54,7 +68,7 @@ export default class Showcase extends React.Component {
                   selectedCase.carouselImgsUrl.map((img, index) => {
                     return(
                       <div key={index} className="carousel-elem" style={{backgroundImage:`url(${img})`}}>
-                        <img src={img} />
+                        <img src={img} alt={`image-${index} du client ${selectedCase.title}`} />
                       </div>)
                     })
                   }

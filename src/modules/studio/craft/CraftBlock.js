@@ -14,7 +14,7 @@ export default class CraftBlock extends React.Component {
 
   render() {
 
-    const selected = craftList.find(selected => selected.id == this.props.index)
+    const selected = craftList.find(selected => selected.id === this.props.index)
 
 
     let activeBlock= " "

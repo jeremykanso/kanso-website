@@ -14,19 +14,19 @@ export default class Team extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      teamTextType:"general",
+      teamTextType:0,
     }
   }
 
   onClickPicture = (id) => () => {
-    this.setState({teamTextType:`${id}`})
+    this.setState({teamTextType:id})
   }
 
   render() {
     let activeBlock= "team-not-active"
     if (this.props.isActive) activeBlock= "active-block team-active"
     let textIsActive = true
-    if (this.state.teamTextType === "general") textIsActive = false
+    if (this.state.teamTextType === 0) textIsActive = false
     return (
       <div className={`blocks block-${this.props.index} team ${activeBlock}`}>
         <div className="team-pictures">
@@ -37,7 +37,7 @@ export default class Team extends React.Component {
           }
         </div>
 
-        <TeamText textIsActive={textIsActive} teamTextType={this.state.teamTextType} onClick={this.onClickPicture('general')} isActive={this.props.isActive} />
+        <TeamText textIsActive={textIsActive} teamTextType={this.state.teamTextType} onClick={this.onClickPicture(0)} isActive={this.props.isActive} />
 
       </div>
 

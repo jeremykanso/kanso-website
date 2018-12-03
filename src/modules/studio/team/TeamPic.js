@@ -10,12 +10,12 @@ export default class TeamPic extends React.Component {
     titre: PropTypes.array.isRequired,
     imgUrl: PropTypes.array.isRequired,
     onClick:PropTypes.func.isRequired,
-    activePic:PropTypes.string.isRequired,
+    activePic:PropTypes.number.isRequired,
   }
 
   render() {
     let isActive = ""
-    if (this.props.activePic == this.props.index) isActive = "team-pic-active" // ne pas changer l'équivalence (string vs number)
+    if (this.props.activePic === this.props.index) isActive = "team-pic-active" // ne pas changer l'équivalence (string vs number)
 
     return (
       <div className={`team-pic team-pic-${this.props.index} ${isActive}`} onClick={this.props.onClick}>

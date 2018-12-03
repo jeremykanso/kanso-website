@@ -18,20 +18,20 @@ export default class BoxScroller extends React.Component {
 
   componentDidMount() {
     let maxScrolls = 4
-    if (this.props.type == "realize") maxScrolls = 2
+    if (this.props.type === "realize") maxScrolls = 2
     this.autoScroller(maxScrolls)
   }
 
   componentWillUnmount(){
-// normalement il faudrait clear l'interval mais je n'arrive pas à l'attraper (this.timer ?)
+clearInterval(this.timer)
   }
 
   autoScroller = (maxScrolls) => {
 
-    const timer = setInterval(() => {
+    this.timer = setInterval(() => {
       if (this.state.i > maxScrolls) {
         this.setState({i:0, boxScrollerAnimation: " "})
-        setTimeout(() => {this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})}, 50) // pas bien mais j'arrive pas à faire un callback de setState vu que c'est asynchrone
+        setTimeout(() => {this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})}, 50) // setTimeout pas bien mais j'arrive pas à faire un callback de setState vu que c'est asynchrone (quand if s'applique)
       }
       else this.setState({i:this.state.i+1, boxScrollerAnimation: "box-scroller-animation-active"})
     }, 2000)
@@ -40,7 +40,7 @@ export default class BoxScroller extends React.Component {
   render() {
     let scrollerPos = -4 * this.state.i
     if (this.props.type === "realize") scrollerPos = 4 * this.state.i
-    const selectedWeDo = weDoList.find(selected => selected.type == this.props.type)
+    const selectedWeDo = weDoList.find(selected => selected.type === this.props.type)
 
     return (
       <div className={`box-overflow ${this.props.fade}`}>

@@ -10,7 +10,10 @@ const generalIsSelected = { // fake datas for design purposes...
 export default class BlockExpertises extends React.Component {
 
   static propTypes = {
-    selected: PropTypes.object,
+    selected: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
     type: PropTypes.string.isRequired,
     shouldActivate:PropTypes.bool,
   }
@@ -41,7 +44,7 @@ export default class BlockExpertises extends React.Component {
 
       if (this.state.animationIsActivated) classAnimation = "team-gauge-animation"
 
-      if (this.checkSelected != this.props.selected) this.refreshStateForAnimation()
+      if (this.checkSelected !== this.props.selected) this.refreshStateForAnimation()
 
     }
 

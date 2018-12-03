@@ -10,14 +10,14 @@ export default class TeamText extends React.Component {
 
   static propTypes = {
     textIsActive: PropTypes.bool.isRequired,
-    teamTextType: PropTypes.string.isRequired,
+    teamTextType: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
     isActive: PropTypes.bool.isRequired,
   }
 
   state = {animationIsActivated: true}
 
-  teamTextType = "general"
+  teamTextType = 0
   isActive = false
 
 
@@ -32,18 +32,18 @@ export default class TeamText extends React.Component {
     let buttonOpacity = 0
     let buttonShow = "default"
     if (this.props.textIsActive) {
-    selectedText = teamList.find(selected => selected.id == this.props.teamTextType)
-    buttonOpacity = 1
-    buttonShow = "pointer"
-  }
+      selectedText = teamList.find(selected => selected.id === this.props.teamTextType)
+      buttonOpacity = 1
+      buttonShow = "pointer"
+    }
 
-  let classAnimation = ""
-  if (this.state.animationIsActivated) {
-    classAnimation = "team-text-animation"
-    if (!this.isActive) classAnimation = "team-text-animation team-text-first-active-animation"
-  }
+    let classAnimation = ""
+    if (this.state.animationIsActivated) {
+      classAnimation = "team-text-animation"
+      if (!this.isActive) classAnimation = "team-text-animation team-text-first-active-animation"
+    }
 
-    if (this.teamTextType != this.props.teamTextType) this.refreshStateForAnimation()
+    if (this.teamTextType !== this.props.teamTextType) this.refreshStateForAnimation()
 
     this.isActive = this.props.isActive
 
@@ -52,29 +52,30 @@ export default class TeamText extends React.Component {
       <div className={`team-text ${classAnimation}`}>
         <h1 style={{color:!this.props.textIsActive ? "#ff6842" : "#333333" }}>L'équipe</h1>
         <div className="team-textarea">
-        {
-          this.props.textIsActive &&
-          <div className="team-sub-titles">
-            <h2>{selectedText.prenom} {selectedText.nom}</h2>
-            <h3>{selectedText.titre[0]}<br/>& {selectedText.titre[1]}</h3>
-          </div>
-        }
-        <div className="team-description">
-          {!this.props.textIsActive ? selectedText.map((p, index) => {return <p key={index}>{p}</p>})
-            : selectedText.text.map((text, index) => {return <p key={index}>{text}</p>})
-            }
-          </div>
-
-          <BlockExpertises type={"team"} selected={selectedText} shouldActivate={this.props.textIsActive} />
-
           {
             this.props.textIsActive &&
-          <div className="team-socials">
-            <a href={`https://www.linkedin.com/in/${selectedText.socialsIds[0]}`} target="_blank"><img src={require("../../assets/img/linkedin.svg")} /></a>
-            <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank"><img src={require("../../assets/img/malt.svg")} /></a>
+            <div className="team-sub-titles">
+              <h2>{selectedText.prenom} {selectedText.nom}</h2>
+              <h3>{selectedText.titre[0]}<br/>& {selectedText.titre[1]}</h3>
+            </div>
+          }
+          <div className="team-description">
+            {!this.props.textIsActive ? selectedText.map((p, index) => {return <p key={index}>{p}</p>})
+              : selectedText.text.map((text, index) => {return <p key={index}>{text}</p>})
+              }
+            </div>
+            {
+              this.props.isActive && this.props.teamTextType !== 0 &&
+              <BlockExpertises type={"team"} selected={selectedText} shouldActivate={this.props.textIsActive} />
+            }
+            {
+              this.props.textIsActive &&
+              <div className="team-socials">
+                <a href={`https://www.linkedin.com/in/${selectedText.socialsIds[0]}`} target="_blank"><img src={require("../../assets/img/linkedin.svg")} /></a>
+                <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank"><img src={require("../../assets/img/malt.svg")} /></a>
+              </div>
+            }
           </div>
-        }
-        </div>
 
           <button className="back-to-general" onClick={this.props.onClick} style={{opacity:buttonOpacity, cursor:buttonShow}}>
             <svg viewBox="0 0 56 56">

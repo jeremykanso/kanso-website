@@ -46,6 +46,11 @@ h1, h2 {
 .cool-link {
     display: inline-block;
     text-decoration: none;
+    text-transform: inherit;
+font-size: inherit;
+font-weight: inherit;
+cursor: pointer;
+letter-spacing: inherit;
 }
 
 .cool-link::after {
@@ -110,14 +115,18 @@ letter-spacing: 40px;
 }
 
 
-.logo {
+.logo, .switch-button {
   position: fixed;
   z-index: 10;
   right:2%;
   top:2vw;
+}
+
+.logo {
+  left:2%;
+  right:auto;
   width:4rem;
   height:4rem;
-  left:auto;
 }
 
 .logo img {
@@ -125,10 +134,22 @@ letter-spacing: 40px;
 }
 
 .logo-portfolio {
-  left:2%;
-  right:auto;
+  right:2%;
+  left:auto;
 }
 
+.switch-button {
+  font-size: 2rem;
+  transition:1.5s;
+  z-index: 100;
+  color:#fff;
+  background: #000;
+}
+
+.switch-portfolio {
+  right:98%;
+  margin-left:30px;
+}
 
 
 

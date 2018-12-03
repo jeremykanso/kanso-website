@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import animateScrollTo from "animated-scroll-to"
 import "./index.scss"
 import Logo from './modules/general/Logo'
+import SwitchButton from './modules/general/SwitchButton'
 import MainAnimation from './modules/general/MainAnimation'
 import Studio from './modules/studio/Studio'
 import Portfolio from './modules/portfolio/Portfolio'
@@ -129,9 +130,11 @@ render() {
   return (
     <div className="App">
 
+      <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} />
+
       <MainAnimation animationFromRight={this.state.animationFromRight} />
 
-      <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} switchSections={this.switchSections} />
+      <SwitchButton sectionIsPortfolio={this.state.sectionIsPortfolio} switchSections={this.switchSections} />
 
       {
         !this.state.sectionIsPortfolio ?

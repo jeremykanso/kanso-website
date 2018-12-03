@@ -1,11 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-
 export default class Logo extends React.Component {
 
   static propTypes = {
-    switchSections: PropTypes.func.isRequired,
     sectionIsPortfolio: PropTypes.bool.isRequired
   }
 
@@ -16,10 +14,10 @@ export default class Logo extends React.Component {
       logoPortfolio = "logo-portfolio"
       logoColor = "white"
     }
-    return (
 
-      <div className={`logo ${logoPortfolio}`} onClick={this.props.switchSections}>
-      <img src={require(`../assets/img/logo_kanso_500px_${logoColor}.png`)} />
+    return (
+      <div className={`logo ${logoPortfolio}`}>
+        <img src={require(`../assets/img/logo_kanso_500px_${logoColor}.png`)} alt="logo Kanso" />
       </div>
     )
   }

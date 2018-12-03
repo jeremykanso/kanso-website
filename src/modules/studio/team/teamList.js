@@ -1,6 +1,6 @@
 const TEAM_LIST = [
   {
-    id: 0,
+    id: 1,
     prenom: "Jeremy",
     nom: "Coleman",
     titre: ["Chef de projet web", "intégrateur"],
@@ -11,7 +11,7 @@ const TEAM_LIST = [
     socialsIds: ["jeremycolemanscpo", "jeremycoleman"]
   },
   {
-    id: 1,
+    id: 2,
     prenom: "Sylvain",
     nom: "Duchesne",
     titre: ["Ingénieur système", "développeur"],
@@ -22,7 +22,7 @@ const TEAM_LIST = [
     socialsIds: ["duchesnesylvain", "sylvainduchesne"]
   },
   {
-    id: 2,
+    id: 3,
     prenom: "Alfred",
     nom: "Gautier",
     titre: ["Directeur artistique", "graphiste"],
@@ -33,7 +33,7 @@ const TEAM_LIST = [
     socialsIds: ["alfred-gautier-036147152", "alfredgautier"]
   },
   {
-    id: 3,
+    id: 4,
     prenom: "Théophile",
     nom: "Batoz",
     titre: ["Ingénieur système", "développeur"],

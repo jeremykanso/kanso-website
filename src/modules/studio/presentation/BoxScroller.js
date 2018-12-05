@@ -17,10 +17,6 @@ export default class BoxScroller extends React.Component {
     timerOn:false
   }
 
-  componentDidMount() {
-
-  }
-
 
   componentDidUpdate(prevProps){
     let maxScrolls = 4

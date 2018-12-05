@@ -17,7 +17,6 @@ export default class Studio extends React.Component {
 
     return (
       <div className="studio">
-
         <Front index={0} scrollDirection={this.props.scrollDirection} isActive={(this.props.screenPos === 0) ? true : false} />
 
         <Presentation index={1} isActive={(this.props.screenPos === 1) ? true : false} />

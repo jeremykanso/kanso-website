@@ -71,8 +71,8 @@ export default class TeamText extends React.Component {
             {
               this.props.textIsActive &&
               <div className="team-socials">
-                <a href={`https://www.linkedin.com/in/${selectedText.socialsIds[0]}`} target="_blank"><img src={require("../../assets/img/linkedin.svg")} alt={`linkedin icon ${selectedText.prenom}`} /></a>
-                <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank"><img src={require("../../assets/img/malt.svg")} alt={`malt icon ${selectedText.prenom}`} /></a>
+                <a href={`https://www.linkedin.com/in/${selectedText.socialsIds[0]}`} target="_blank" rel="noopener noreferrer"><img src={require("../../assets/img/linkedin.svg")} alt={`linkedin icon ${selectedText.prenom}`} /></a>
+                <a href={`https://www.malt.fr/profile/${selectedText.socialsIds[1]}`} target="_blank" rel="noopener noreferrer"><img src={require("../../assets/img/malt.svg")} alt={`malt icon ${selectedText.prenom}`} /></a>
               </div>
             }
           </div>

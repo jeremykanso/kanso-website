@@ -17,18 +17,20 @@
   flex-direction:column;
   justify-content:center;
   align-items: center;
-  align-content: space-between;
 }
 
 .front-container img {
   width:100%;
   max-height:100%;
+  margin-bottom: 2rem;
 }
 
 .front-container h1 {
   text-transform: uppercase;
-  font-size: 2.8rem;
-  letter-spacing: 3px;
+  font-size: 2.6rem;
+  letter-spacing: 6px;
+  margin-top:2rem;
+
 }
 
 

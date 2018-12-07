@@ -18,7 +18,6 @@ export default class Case extends React.Component {
   render() {
     let activeCase = " "
     let animationType = " "
-    let activeLink = " "
     if (this.props.isActive) activeCase= "active-case"
     if (this.props.scrollDirection === "down") animationType = "wipe-down-in"
     if (this.props.scrollDirection === "up") animationType = "wipe-up-in"

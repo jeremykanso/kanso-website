@@ -4,12 +4,7 @@ import PropTypes from "prop-types"
 export default class Front extends React.Component {
 
   static propTypes = {
-    scrollDirection: PropTypes.string.isRequired,
     isActive: PropTypes.bool.isRequired,
-  }
-
-  componentDidMount() {
-
   }
 
   render() {

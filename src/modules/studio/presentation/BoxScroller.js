@@ -24,6 +24,10 @@ export default class BoxScroller extends React.Component {
     if(this.props.isActive && !this.state.timerOn) {this.setState({timerOn:true});setTimeout(() => {this.autoScroller(maxScrolls)}, 1800)} else if(!this.props.isActive && this.props.timerOn) {clearInterval(this.timer); this.setState({timerOn:false})}
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   autoScroller = (maxScrolls) => {
     this.timer = setInterval(() => {
       if (this.state.i > maxScrolls) {

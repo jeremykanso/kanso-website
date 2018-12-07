@@ -10,11 +10,7 @@ export default class Presentation extends React.Component {
 
   render() {
     let activeBlock= " "
-    let scaleOpacity= "scale-opacity-out"
-    if (this.props.isActive) {
-      activeBlock= "active-block presentation-active"
-      scaleOpacity= "scale-opacity-in"
-    }
+    if (this.props.isActive) activeBlock= "active-block presentation-active"
 
     return (
       <div className={`blocks block-${this.props.index} presentation ${activeBlock}`}>

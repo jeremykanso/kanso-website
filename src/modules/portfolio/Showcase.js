@@ -68,7 +68,7 @@ export default class Showcase extends React.Component {
                   selectedCase.carouselImgsUrl.map((img, index) => {
                     return(
                       <div key={index} className="carousel-elem" style={{backgroundImage:`url(${img})`}}>
-                        <img src={img} alt={`image-${index} du client ${selectedCase.title}`} />
+                        <img src={img} alt={`n°${index} du client ${selectedCase.title}`} />
                       </div>)
                     })
                   }

@@ -66,14 +66,6 @@ h1, h2 {
   right:-200%;
 }
 
-.animation-activated-from-left div img {
-  transform: rotateY(180deg);
-}
-
-.animation-activated-from-right div img {
-  transform: rotateY(0deg);
-}
-
 .main-animation div {
 align-items: center;
 flex:1;
@@ -85,10 +77,6 @@ font-weight: 800;
 text-transform: uppercase;
 letter-spacing: 40px;
 }
-.main-animation div img {
-  height:100%;
-}
-
 
 .logo, .switch-button {
   position: fixed;

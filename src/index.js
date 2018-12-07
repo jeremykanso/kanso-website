@@ -1,5 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { Router, Route, Switch } from "react-router-dom"
+import history from './history'
 import animateScrollTo from "animated-scroll-to"
 import "./index.scss"
 import Logo from './modules/general/Logo'
@@ -27,6 +29,7 @@ export default class App extends React.Component {
   componentDidMount() {
     window.addEventListener("wheel", this.handleWheel)
     window.addEventListener("resize", this.handleResize)
+    if(history.location.pathname == '/') history.replace("/studio")
   }
 
   componentWillUnmount() {
@@ -34,14 +37,19 @@ export default class App extends React.Component {
     window.removeEventListener("resize", this.handleResize)
   }
 
+  componentDidUpdate(a, prevState) {
+  console.log("screenPosStudio" + this.state.screenPosStudio)
+  console.log("screenPosPortfolio" + this.state.screenPosPortfolio)
 
+  }
 
-  switchSections = () => {
+  switchSections = (stopHistory) => {
     if (!this.state.sectionsAreAnimating) {
       this.setState({sectionsAreAnimating:true})
       if (!this.state.sectionIsPortfolio) {
         this.setState({animationFromRight:true})
         setTimeout(() => {
+          if(stopHistory !== true) this.fixHistory(true)
           this.setState({sectionIsPortfolio:true, sectionsAreAnimating:false, portfolioIsAnimating:true})
           this.scrollAnimation()
         }, 1000)
@@ -49,6 +57,7 @@ export default class App extends React.Component {
       else {
         this.setState({animationFromRight:false})
         setTimeout(() => {
+          if(stopHistory !== true) this.fixHistory(false)
           this.setState({sectionIsPortfolio:false, sectionsAreAnimating:false, studioIsAnimating:true})
           this.scrollAnimation()
         }, 1000)
@@ -90,7 +99,6 @@ export default class App extends React.Component {
             delay = 500
             this.toggleShowcase()
           }
-
           this.setState({portfolioIsAnimating:true})
           setTimeout(() => {
             this.setState({screenPosPortfolio: this.getScreenPos(e.deltaY, this.state.screenPosPortfolio)},
@@ -108,6 +116,15 @@ export default class App extends React.Component {
     }
   }
 
+  fixHistory = (willPortfolio) => {
+    console.log(willPortfolio)
+    if (willPortfolio) {
+      history.push("/portfolio")
+    } else {
+      history.push("/studio")
+    }
+  }
+
   scrollAnimation = () => {
     let selectedElem = ".block-"+this.state.screenPosStudio
     if (this.state.sectionIsPortfolio) selectedElem = ".case-"+this.state.screenPosPortfolio
@@ -115,7 +132,7 @@ export default class App extends React.Component {
     {
       speed:2000,
       cancelOnUserAction:false,
-      onComplete: () => this.setState({portfolioIsAnimating: false, studioIsAnimating:false})
+      onComplete: () => {this.setState({portfolioIsAnimating: false, studioIsAnimating:false})}
     }
   )
 }
@@ -126,24 +143,45 @@ toggleShowcase = () => {
 
 
 render() {
-
   return (
-    <div className="App">
+    <Router history={history}>
+      <div className="App">
 
-      <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} />
+        <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} />
 
-      <MainAnimation animationFromRight={this.state.animationFromRight} />
+        <MainAnimation animationFromRight={this.state.animationFromRight} />
 
-      <SwitchButton sectionIsPortfolio={this.state.sectionIsPortfolio} switchSections={this.switchSections} />
+        <SwitchButton sectionIsPortfolio={this.state.sectionIsPortfolio} switchSections={this.switchSections} />
 
-      {
-        !this.state.sectionIsPortfolio ?
-        <Studio screenPos={this.state.screenPosStudio} scrollDirection={this.state.scrollDirection} />
 
-        : <Portfolio screenPos={this.state.screenPosPortfolio} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />
-    }
-  </div>
-)
+        <Route path="/studio" render={(props) =>  {
+            if (!this.state.sectionIsPortfolio) {
+              return <Studio screenPos={this.state.screenPosStudio} scrollDirection={this.state.scrollDirection} />
+            }
+            else {
+              this.switchSections(true)
+              setTimeout(() => {return <Studio screenPos={this.state.screenPosStudio} scrollDirection={this.state.scrollDirection} />}, 1000)
+                return <Portfolio screenPos={this.state.screenPosPortfolio} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />
+              }
+            }
+          }
+          />
+
+        <Route path="/portfolio" render={(props) => {
+            if (this.state.sectionIsPortfolio) {
+              return <Portfolio screenPos={this.state.screenPosPortfolio} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />
+            }
+            else {
+              this.switchSections(true)
+              setTimeout(() => {return <Portfolio screenPos={this.state.screenPosPortfolio} scrollDirection={this.state.scrollDirection} toggleShowcase={this.toggleShowcase} showcaseOn={this.state.showcaseOn} />}, 1000)
+                return <Studio screenPos={this.state.screenPosStudio} scrollDirection={this.state.scrollDirection} />
+              }
+            }
+          }
+          />
+      </div>
+    </Router>
+  )
 
 }
 }

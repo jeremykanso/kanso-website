@@ -144,7 +144,6 @@ $showcase-animation-duration: 0.8s;
   z-index: 5;
   transition: width $showcase-animation-duration ease-in-out;
   background: #333333;
-
 }
 
 .showcase-active {
@@ -159,7 +158,6 @@ $showcase-animation-duration: 0.8s;
   width:98vw;
   color:#fff;
   display: flex;
-
 }
 
 .showcase-carousel, .showcase-text {
@@ -170,7 +168,6 @@ $showcase-animation-duration: 0.8s;
 .showcase-carousel {
   flex:1;
 }
-
 
 .showcase-text {
   flex:2;
@@ -208,13 +205,6 @@ $showcase-animation-duration: 0.8s;
 
   .back-to-general svg polyline, .back-to-general svg circle {
     stroke:#ffffff;
-    transition: transform 0.5s ease;
-  }
-
-  .back-to-general svg circle {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 0.5s ease;
   }
 
 }

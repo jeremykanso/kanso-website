@@ -22,15 +22,15 @@
 .front-container img {
   width:100%;
   max-height:100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .front-container h1 {
   text-transform: uppercase;
-  font-size: 2.6rem;
-  letter-spacing: 6px;
-  margin-top:2rem;
-
+  margin-top:1rem;
+  color: #333333;
+      font-size: 2rem;
+      letter-spacing: 10px;
 }
 
 
@@ -512,30 +512,37 @@ $transition-team: opacity 0.4s ease-out, transform 0.4s ease-out;
   stroke:#333333;
   stroke-width:4;
   stroke-miterlimit:10;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .back-to-general svg circle {
   display: block;
   stroke-dasharray: 200;
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, stroke-dashoffset 0.5s ease;
 }
 
 .back-to-general:hover svg circle {
   stroke-dashoffset: 200;
+  opacity:0.7;
+}
+
+.back-to-general:hover svg polyline {
+opacity:0.7;
 }
 
 .back-to-general:hover .back-arrow-polyline-one {
   animation-name: back-arrow-moving-one;
   @extend %standard-animation;
   animation-duration: 0.5s;
+
 }
 
 .back-to-general:hover .back-arrow-polyline-two {
   animation-name: back-arrow-moving-two;
   @extend %standard-animation;
   animation-duration: 0.5s;
+
 }
 
 .team-socials {

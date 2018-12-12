@@ -73,7 +73,7 @@ export default class App extends React.Component {
         this.setState({scrollDirection:"down"})
         return screenPos + 1
       } else
-      return 0
+      return screenPos
 
     }
     else {
@@ -81,7 +81,7 @@ export default class App extends React.Component {
         this.setState({scrollDirection:"up"})
         return screenPos - 1
       } else
-      return maxScreenPos
+      return screenPos
     }
   }
 
@@ -91,7 +91,7 @@ export default class App extends React.Component {
   }
 
   handleWheel = e => {
-    if(!this.state.sectionsAreAnimating){
+    if(!this.state.sectionsAreAnimating) {
       if(this.state.sectionIsPortfolio) {
         if (!this.state.portfolioIsAnimating) {
           let delay = 0
@@ -147,7 +147,7 @@ render() {
     <Router history={history}>
       <div className="App">
 
-        <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} />
+        <Logo sectionIsPortfolio={this.state.sectionIsPortfolio} isActive={(this.state.screenPosStudio !== 0 || this.state.sectionIsPortfolio) ? true : false} />
 
         <MainAnimation animationFromRight={this.state.animationFromRight} />
 

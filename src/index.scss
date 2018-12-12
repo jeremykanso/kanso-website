@@ -88,8 +88,7 @@ letter-spacing: 40px;
 .logo {
   left:2%;
   right:auto;
-  width:4rem;
-  height:4rem;
+  height:2rem;
 }
 
 .logo img {
@@ -99,6 +98,16 @@ letter-spacing: 40px;
 .logo-portfolio {
   right:2%;
   left:auto;
+}
+
+.logo-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in 0.5s;
+}
+
+.logo-inactive {
+  opacity:0;
+  transition: opacity 0.3s;
 }
 
 .switch-button {
@@ -114,9 +123,6 @@ letter-spacing: 40px;
   margin-left:30px;
 }
 
-
-
-
 .wipe-up-in, .wipe-down-in, /*.wipe-up, .wipe-down,*/ .scale-opacity-in, .scale-opacity-out{
     overflow: hidden;
     margin: 0 auto;
@@ -129,6 +135,7 @@ letter-spacing: 40px;
 .wipe-down-in {
     animation-name: wipe-down-in;
 }
+
 /*
 .wipe-up {
   animation-duration: 1.3s;
@@ -141,17 +148,16 @@ letter-spacing: 40px;
 transform:translateY(100%);
 }
 */
+
 .scale-opacity-in {
   animation-name: scale-opacity-in;
   animation-duration: 1s;
-
 }
 
 .scale-opacity-out {
   animation-name: scale-opacity-out;
   animation-duration: 1s;
 }
-
 
 /*
 .wipe-down {
@@ -173,6 +179,7 @@ transform:translateY(100%);
   0%{opacity:0;transform:translateY(-100%)}
   100%{opacity:1;transform:translateY(0)}
 }
+
 /*
 @keyframes wipe-up{
   0%{transform:translateY(100%)}

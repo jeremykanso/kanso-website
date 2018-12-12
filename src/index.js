@@ -18,7 +18,7 @@ export default class App extends React.Component {
       sectionsAreAnimating:false,
       animationFromRight:false,
       portfolioIsAnimating: false,
-      studioIsAnimating: false,
+      studioIsAnimating: false, 
       screenPosPortfolio: 0,
       screenPosStudio: 0,
       scrollDirection:"inactive",

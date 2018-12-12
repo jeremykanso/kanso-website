@@ -5,7 +5,7 @@
 .cool-effect {
   display: block;
   width:0;
-  margin-top:-8px;
+  margin-top:-13px;
   background: $orange;
   margin-left:2px;
   height: 10px;
@@ -15,7 +15,6 @@
   width: calc(100% - 4px);
   transition: width 0.8s ease-out 1.4s;
 }
-
 
 .cases {
   position: relative;

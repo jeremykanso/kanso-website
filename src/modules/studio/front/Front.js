@@ -13,11 +13,15 @@ export default class Front extends React.Component {
     return (
       <div className={`blocks block-${this.props.index} front ${activeBlock}`}>
         <div className="front-container">
-        <img src={require("../../assets/img/kanso.gif")} alt="kanso studio intro" />
-        <h1>Studio Digital & Créatif</h1>
+          <img src={require("../../assets/img/kanso.gif")} alt="kanso studio intro" />
+          <h1>Studio Digital & Créatif</h1>
+          <div class="scroll-downs">
+            <div class="mousey">
+              <div class="scroller"></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
     )
   }
 }
